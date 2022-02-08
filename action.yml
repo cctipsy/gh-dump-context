@@ -1,0 +1,109 @@
+name: 'Dump Context'
+description: 'Action to dump context of your github workflow.'
+author: 'utenx'
+
+inputs:
+  context:
+    description: Arguments for dump context object
+    required: false
+    default: 'all'
+
+runs:
+  using: composite
+  steps:
+    - name: Dump environment vars
+      if: ${{ inputs.context == 'env' }}
+      run: |
+        echo -e "\033[33;1;4mDump environment vars\033[0m"
+        echo -e "$(env|sort)\n"
+      shell: bash
+
+    - name: Dump github context
+      if: ${{ inputs.context == 'github' }}
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo -e "\033[33;1;4mDump github context\033[0m"
+        echo -e "$GITHUB_CONTEXT\n"
+      shell: bash
+
+    - name: Dump job context
+      if: ${{ inputs.context == 'job' }}
+      env:
+        JOB_CONTEXT: ${{ toJson(job) }}
+      run: |
+        echo -e "\033[33;1;4mDump job context\033[0m"
+        echo -e "$JOB_CONTEXT\n"
+      shell: bash
+
+    - name: Dump matrix context
+      if: ${{ inputs.context == 'matrix' }}
+      env:
+        MATRIX_CONTEXT: ${{ toJson(matrix) }}
+      run: |
+        echo -e "\033[33;1;4mDump matrix context\033[0m"
+        echo -e "$MATRIX_CONTEXT\n"
+      shell: bash
+
+    - name: Dump runner context
+      if: ${{ inputs.context == 'runner' }}
+      env:
+        RUNNER_CONTEXT: ${{ toJson(runner) }}
+      run: |
+        echo -e "\033[33;1;4mDump runner context\033[0m"
+        echo -e "$RUNNER_CONTEXT\n"
+      shell: bash
+
+    - name: Dump steps context
+      if: ${{ inputs.context == 'steps' }}
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: |
+        echo -e "\033[33;1;4mDump steps context\033[0m"
+        echo -e "$STEPS_CONTEXT\n"
+      shell: bash
+
+    - name: Dump strategy context
+      if: ${{ inputs.context == 'strategy' }}
+      env:
+        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      run: |
+        echo -e "\033[33;1;4mDump strategy context\033[0m"
+        echo -e "$STRATEGY_CONTEXT\n"
+      shell: bash
+
+    - name: Dump all context
+      if: ${{ inputs.context == 'all' }}
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+        JOB_CONTEXT: ${{ toJson(job) }}
+        MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        RUNNER_CONTEXT: ${{ toJson(runner) }}
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      run: |
+        echo -e "\033[33;1;4mDump environment vars\033[0m"
+        echo -e "$(env|sort)\n"
+
+        echo -e "\033[33;1;4mDump github context\033[0m"
+        echo -e "$GITHUB_CONTEXT\n"
+
+        echo -e "\033[33;1;4mDump job context\033[0m"
+        echo -e "$JOB_CONTEXT\n"
+
+        echo -e "\033[33;1;4mDump steps context\033[0m"
+        echo -e "$STEPS_CONTEXT\n"
+
+        echo -e "\033[33;1;4mDump matrix context\033[0m"
+        echo -e "$MATRIX_CONTEXT\n"
+
+        echo -e "\033[33;1;4mDump runner context\033[0m"
+        echo -e "$RUNNER_CONTEXT\n"
+
+        echo -e "\033[33;1;4mDump strategy context\033[0m"
+        echo -e "$STRATEGY_CONTEXT\n"
+      shell: bash
+
+branding:
+  icon: 'info'
+  color: 'green'
