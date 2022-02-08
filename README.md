@@ -1,7 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/utenx/gh-dump-context.svg)](https://github.com/utenx/gh-dump-context/releases/latest)
 [![CI workflow](https://img.shields.io/github/workflow/status/crazy-max/ghaction-dump-context/ci?label=ci&logo=github)](https://github.com/utenx/gh-dump-context/actions?workflow=dump-context)
-[![Marketplace](https://img.shields.io/badge/action-marketplace-orange?logo=github)](https://github.com/marketplace/actions/gh-dump-context)
-
+[![Marketplace](https://img.shields.io/badge/action-marketplace-orange?logo=github)](https://github.com/marketplace/actions/dump-github-context)
 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
