@@ -1,4 +1,4 @@
-name: 'Dump Context'
+name: 'Dump Github Context'
 description: 'Action to dump context of your github workflow.'
 author: 'utenx'
 
