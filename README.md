@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dump context
-        uses: utenx/gh-dump-context@v1
+        uses: cctipsy/gh-dump-context@v1
         with:
           context: github
 ```
